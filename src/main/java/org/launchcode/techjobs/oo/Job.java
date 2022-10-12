@@ -28,6 +28,16 @@ public class Job {
         this.location = location;
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
+
+
+        if (Objects.equals(name, "" ) && Objects.equals(employer, "") && Objects.equals(location, "") && Objects.equals(positionType, "") && Objects.equals(coreCompetency, "")) {
+            System.out.println("OOPS! This job does not seem to exist.");
+        }
+
+        if (Objects.equals(name, "")) {
+            setName("Data not available");
+        }
+
     }
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
@@ -65,9 +75,7 @@ public class Job {
         this.name = name;
     }
 
-    public Employer getEmployer() {
-        return employer;
-    }
+    public Employer getEmployer() { return employer; }
 
     public void setEmployer(Employer employer) {
         this.employer = employer;
@@ -96,4 +104,15 @@ public class Job {
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
+
+    public String toString() {
+
+            return "\n" + "ID: " + id +
+                    "\nName: " + name +
+                    "\nEmployer: " + employer +
+                    "\nLocation: " + location +
+                    "\nPosition Type: " + positionType +
+                    "\nCore Competency: " + coreCompetency + "\n";
+        }
+
 }

@@ -7,6 +7,8 @@ import org.launchcode.techjobs.oo.*;
 
 import javax.naming.Name;
 
+import java.util.Objects;
+
 import static org.junit.Assert.*;
 
 /**
@@ -47,5 +49,34 @@ public class JobTest {
         assertFalse(test1.equals(test2));
     }
 
+    @Test
+    public void testToStringStartsAndEndsWithNewLine() {
+        Job test1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+    assertEquals(test1.toString().charAt(0), '\n');
+    assertEquals(test1.toString().charAt(test1.toString().length() - 1), '\n');
+
+    }
+
+    @Test
+    public void testToStringContainsCorrectLabelsAndData() {
+        Job test1 = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        assertEquals('\n' + "ID: " + test1.getId() + '\n' +
+                "Name: " + test1.getName() + '\n' +
+                "Employer: " + test1.getEmployer() + '\n' +
+                "Location: " + test1.getLocation() + '\n' +
+                "Position Type: " + test1.getPositionType() + '\n' +
+                "Core Competency: " + test1.getCoreCompetency() + '\n', test1.toString());
+    }
+
+    @Test
+    public void testToStringHandlesEmptyField() {
+        Job test1 = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
+        assertEquals("Data not available", test1.getName());
+        assertEquals("Data not available", test1.getEmployer().getValue());
+        assertEquals("Data not available", test1.getLocation().getValue());
+        assertEquals("Data not available", test1.getPositionType().getValue());
+        assertEquals("Data not available", test1.getCoreCompetency().getValue());
+        }
 
 }
