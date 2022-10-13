@@ -1,5 +1,6 @@
 package org.launchcode.techjobs.oo;
 
+import javax.lang.model.element.Name;
 import java.util.Objects;
 
 public class Job {
@@ -28,16 +29,6 @@ public class Job {
         this.location = location;
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
-
-
-        if (Objects.equals(name, "" ) && Objects.equals(employer, "") && Objects.equals(location, "") && Objects.equals(positionType, "") && Objects.equals(coreCompetency, "")) {
-            System.out.println("OOPS! This job does not seem to exist.");
-        }
-
-        if (Objects.equals(name, "")) {
-            setName("Data not available");
-        }
-
     }
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
@@ -105,14 +96,19 @@ public class Job {
         this.coreCompetency = coreCompetency;
     }
 
+
     public String toString() {
 
-            return "\n" + "ID: " + id +
-                    "\nName: " + name +
-                    "\nEmployer: " + employer +
-                    "\nLocation: " + location +
-                    "\nPosition Type: " + positionType +
-                    "\nCore Competency: " + coreCompetency + "\n";
+        if (name.equals("")) {
+            this.name = "Data not available";
         }
 
+            return '\n' + "ID: " + id + '\n' +
+                    "Name: " + name + '\n' +
+                    "Employer: " + employer + '\n' +
+                    "Location: " + location + '\n' +
+                    "Position Type: " + positionType + '\n' +
+                    "Core Competency: " + coreCompetency + "\n";
+
+    }
 }
