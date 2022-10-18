@@ -72,8 +72,12 @@ public class JobTest {
     @Test
     public void testToStringHandlesEmptyField() {
         Job test1 = new Job("", new Employer(""), new Location(""), new PositionType(""), new CoreCompetency(""));
-        Job test2 = new Job("Data not available", new Employer("Data not available"), new Location("Data not available"), new PositionType("Data not available"), new CoreCompetency("Data not available"));
-        assertEquals(test1.toString(), test2.toString());
+        assertEquals(test1.toString(), '\n' + "ID: " + test1.getId() + '\n' +
+                "Name: " + "Data not available" + '\n' +
+                "Employer: " + "Data not available" + '\n' +
+                "Location: " + "Data not available" + '\n' +
+                "Position Type: " + "Data not available" + '\n' +
+                "Core Competency: " + "Data not available" + '\n');
         }
 
 }
